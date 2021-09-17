@@ -1,7 +1,19 @@
 let greet: Function;
 
+/* ------------------ Type Aliases ---------------------- */
+type StringOrNum = string | number;
+type ObjectWithName = { name: string; uid: StringOrNum };
+
 greet = () => {
   console.log("ni hao");
+};
+
+const logDetails = (uid: StringOrNum, item: string) => {
+  console.log(`${item} has a uid of ${uid}`);
+};
+
+const greetAgain = (user: ObjectWithName): void => {
+  console.log(`${user.name} says hello`);
 };
 
 // ? ... optional, this time giving the third argument is optional
