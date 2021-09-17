@@ -1,3 +1,4 @@
+"use strict";
 /* ----------- Data types -------------*/
 // define data type for the parameter
 var circumfenrence = function (diameter) {
@@ -17,7 +18,7 @@ mixedDataTypes[0] = 2021;
 var teamMember = {
     name: "zelda",
     role: "debugger",
-    age: 24
+    age: 24,
 };
 // nope
 // teamMember.age = "24"
@@ -27,7 +28,7 @@ var teamMember = {
 teamMember = {
     name: "link",
     role: "backend developer",
-    age: 23
+    age: 23,
 };
 // no no
 // teamMember = {
@@ -56,4 +57,19 @@ var obj1;
 obj1 = { name: "mia", age: "12" };
 obj1 = []; // this is allowed... because an array is kind of an object
 var student;
+/* ----------------- Dynamic Types ------------------*/
+// but then why we use TypeScript? this can only be for some rare cases!
+var year = 100;
+year = true;
+year = "2020";
+year = { year: 2021 };
+var mixedVal = [];
+mixedVal.push(5);
+mixedVal.push("hiiii");
+mixedVal.push(true);
+var obj2;
+obj2 = {
+    name: 2222,
+    number: true,
+};
 // how to compile... tsc filename.ts -w

@@ -74,4 +74,29 @@ let student: {
   isFailed: boolean;
 };
 
+/* ----------------- Dynamic Types ------------------*/
+// but then why we use TypeScript? this can only be for some rare cases!
+let year: any = 100;
+year = true;
+year = "2020";
+year = { year: 2021 };
+
+let mixedVal: any[] = [];
+
+mixedVal.push(5);
+mixedVal.push("hiiii");
+mixedVal.push(true);
+
+let obj2: { name: any; number: any };
+obj2 = {
+  name: 2222,
+  number: true,
+};
+
 // how to compile... tsc filename.ts -w
+// but now js files in public and ts files in src, so what I did is
+// tsc --init in project root
+//  "rootDir": "./src" and    "outDir": "./public" in tsconfig.json
+// also added "include": ["src"] ... this is to limit where you compile
+// ts to js (without this it still complile ts files outside of src)
+// then, just type tsc, or tsc -w
