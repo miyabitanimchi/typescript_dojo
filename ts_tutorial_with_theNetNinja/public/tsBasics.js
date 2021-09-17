@@ -73,3 +73,9 @@ obj2 = {
     number: true,
 };
 // how to compile... tsc filename.ts -w
+// but now js files in public and ts files in src, so what I did is
+// tsc --init in project root
+//  "rootDir": "./src" and    "outDir": "./public" in tsconfig.json
+// also added "include": ["src"] ... this is to limit where you compile
+// ts to js (without this it still complile ts files outside of src)
+// then, just type tsc, or tsc -w
