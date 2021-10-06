@@ -77,5 +77,5 @@ obj2 = {
 // tsc --init in project root
 //  "rootDir": "./src" and    "outDir": "./public" in tsconfig.json
 // also added "include": ["src"] ... this is to limit where you compile
-// ts to js (without this it still complile ts files outside of src)
+// ts to js (without this it still compliles ts files outside of src)
 // then, just type tsc, or tsc -w
