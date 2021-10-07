@@ -100,3 +100,6 @@ obj2 = {
 // also added "include": ["src"] ... this is to limit where you compile
 // ts to js (without this it still compliles ts files outside of src)
 // then, just type tsc, or tsc -w in the project root
+
+// module... what I did
+// tsconfig "module": "es2015", "target": "es6"
