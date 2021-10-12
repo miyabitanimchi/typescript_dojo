@@ -103,3 +103,5 @@ obj2 = {
 
 // module... what I did
 // tsconfig "module": "es2015", "target": "es6"
+// add type="module" on script tag on index.html
+// export Invoice.ts, and import it on app.js

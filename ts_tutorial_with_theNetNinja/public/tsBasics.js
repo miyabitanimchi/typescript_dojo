@@ -1,21 +1,21 @@
 "use strict";
 /* ----------- Data types -------------*/
 // define data type for the parameter
-var circumfenrence = function (diameter) {
+const circumfenrence = (diameter) => {
     return diameter * Math.PI;
 };
 console.log(circumfenrence(20));
 /* -------------- Array ---------------*/
-var numbers = [1, 3, 55, 100];
+let numbers = [1, 3, 55, 100];
 // you can't do this
 // numbers[0] = "hi";
 // can't do this either
 // numbers = "hello";
-var mixedDataTypes = ["miyabi", 4, "hi", true];
+let mixedDataTypes = ["miyabi", 4, "hi", true];
 // ok
 mixedDataTypes[0] = 2021;
 /* -------------- Object ---------------*/
-var teamMember = {
+let teamMember = {
     name: "zelda",
     role: "debugger",
     age: 24,
@@ -39,35 +39,35 @@ teamMember = {
 // };
 /* -------------- Explicit Types ---------------*/
 // you can define just data types first like below,
-var character;
-var age;
-var isLoggedIn;
-var list;
+let character;
+let age;
+let isLoggedIn;
+let list;
 // then can assign the actual values
 character = "salut";
 // list.push("mia") ... can't do this cuz let list: string[];
 // doesn't mean it's initialized yet
-var list2 = [];
+let list2 = [];
 list2.push(2); // we can push it
 /* -------------- Union Types ---------------*/
-var mixedArr = [];
-var uid;
+let mixedArr = [];
+let uid;
 /* ----------------- Objects------------------*/
-var obj1;
+let obj1;
 obj1 = { name: "mia", age: "12" };
 obj1 = []; // this is allowed... because an array is kind of an object
-var student;
+let student;
 /* ----------------- Dynamic Types ------------------*/
 // but then why we use TypeScript? this can only be for some rare cases!
-var year = 100;
+let year = 100;
 year = true;
 year = "2020";
 year = { year: 2021 };
-var mixedVal = [];
+let mixedVal = [];
 mixedVal.push(5);
 mixedVal.push("hiiii");
 mixedVal.push(true);
-var obj2;
+let obj2;
 obj2 = {
     name: 2222,
     number: true,
@@ -78,4 +78,8 @@ obj2 = {
 //  "rootDir": "./src" and    "outDir": "./public" in tsconfig.json
 // also added "include": ["src"] ... this is to limit where you compile
 // ts to js (without this it still compliles ts files outside of src)
-// then, just type tsc, or tsc -w
+// then, just type tsc, or tsc -w in the project root
+// module... what I did
+// tsconfig "module": "es2015", "target": "es6"
+// add type="module" on script tag on index.html
+// export Invoice.ts, and import it on app.js

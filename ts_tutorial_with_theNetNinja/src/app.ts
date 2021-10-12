@@ -1,33 +1,55 @@
-// classes ...all properties are public by default
-class Invoice {
-  // can only read inside/outside of class, but can't change the value (even inside)
-  // readonly client: string;
-  // can read and change value only inside of class
-  // private details: string;
-  // it's by default so we don't have to explicitly write public
-  // public amount: number;
+// interfaces
+// interface IsPerson {
+//   name: string;
+//   age: number;
+//   speak(a: string): void;
+//   spend(a: number): number;
+// }
 
-  constructor(
-    readonly client: string,
-    private details: string,
-    public amount: number
-  ) {}
-  format() {
-    return `${this.client} owes $${this.amount} for ${this.details}`;
-  }
-}
+// const me: IsPerson = {
+//   name: "miyabi",
+//   age: 17,
+//   speak(text: string): void {
+//     console.log(text);
+//   },
+//   spend(amount: number): number {
+//     console.log("I spent", amount);
+//     return amount;
+//   },
+// };
 
-const invOne = new Invoice("mario", "work on the mario website", 250);
-const invTwo = new Invoice("luigi", "work on the mario website", 300);
+// const greetPerson = (person: IsPerson) => {
+//   console.log("hello", person.name);
+// };
 
-let invoices: Invoice[] = []; // initialize an array
-invoices.push(invOne);
-invoices.push(invTwo);
+// console.log(me);
 
-invoices.forEach((inv) => {
-  // can still call inv.format() even though details is private
-  console.log(inv.client, inv.amount, inv.format());
-});
+import { Invoice } from "./classes/Invoice.js";
+import { Payment } from "./classes/Payment.js";
+import { HasFormatter } from "./interfaces/HasFormatter.js";
+// ! .js, not .ts!
+
+// let docOne: HasFormatter;
+// let docTwo: HasFormatter;
+
+// docOne = new Invoice("yoshi", "web work", 250);
+// docTwo = new Payment("luigi", "plumbing work", 400);
+
+// let docs: HasFormatter[] = [];
+// docs.push(docOne);
+// docs.push(docTwo);
+
+// const invOne = new Invoice("mario", "work on the mario website", 250);
+// const invTwo = new Invoice("luigi", "work on the mario website", 300);
+
+// let invoices: Invoice[] = []; // initialize an array
+// invoices.push(invOne);
+// invoices.push(invTwo);
+
+// invoices.forEach((inv) => {
+//   // can still call inv.format() even though details is private
+//   console.log(inv.client, inv.amount, inv.format());
+// });
 
 const anchor = document.querySelector("a")!; // or, put excramation mark at the end
 
@@ -55,5 +77,11 @@ const amount = document.querySelector("#amount") as HTMLInputElement;
 
 form.addEventListener("submit", (e: Event) => {
   e.preventDefault();
-  console.log(type.value, tofrom.value, details.value, amount.valueAsNumber);
+  let doc: HasFormatter;
+  if (type.value === "invoice") {
+    doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
+  } else {
+    doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+  }
+  console.log(doc);
 });

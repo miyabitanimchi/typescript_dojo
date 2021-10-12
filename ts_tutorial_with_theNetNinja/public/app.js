@@ -1,32 +1,45 @@
-"use strict";
-// classes ...all properties are public by default
-var Invoice = /** @class */ (function () {
-    // can only read inside/outside of class, but can't change the value (even inside)
-    // readonly client: string;
-    // can read and change value only inside of class
-    // private details: string;
-    // it's by default so we don't have to explicitly write public
-    // public amount: number;
-    function Invoice(client, details, amount) {
-        this.client = client;
-        this.details = details;
-        this.amount = amount;
-    }
-    Invoice.prototype.format = function () {
-        return this.client + " owes $" + this.amount + " for " + this.details;
-    };
-    return Invoice;
-}());
-var invOne = new Invoice("mario", "work on the mario website", 250);
-var invTwo = new Invoice("luigi", "work on the mario website", 300);
-var invoices = []; // initialize an array
-invoices.push(invOne);
-invoices.push(invTwo);
-invoices.forEach(function (inv) {
-    // can still call inv.format() even though details is private
-    console.log(inv.client, inv.amount, inv.format());
-});
-var anchor = document.querySelector("a"); // or, put excramation mark at the end
+// interfaces
+// interface IsPerson {
+//   name: string;
+//   age: number;
+//   speak(a: string): void;
+//   spend(a: number): number;
+// }
+// const me: IsPerson = {
+//   name: "miyabi",
+//   age: 17,
+//   speak(text: string): void {
+//     console.log(text);
+//   },
+//   spend(amount: number): number {
+//     console.log("I spent", amount);
+//     return amount;
+//   },
+// };
+// const greetPerson = (person: IsPerson) => {
+//   console.log("hello", person.name);
+// };
+// console.log(me);
+import { Invoice } from "./classes/Invoice.js";
+import { Payment } from "./classes/Payment.js";
+// ! .js, not .ts!
+// let docOne: HasFormatter;
+// let docTwo: HasFormatter;
+// docOne = new Invoice("yoshi", "web work", 250);
+// docTwo = new Payment("luigi", "plumbing work", 400);
+// let docs: HasFormatter[] = [];
+// docs.push(docOne);
+// docs.push(docTwo);
+// const invOne = new Invoice("mario", "work on the mario website", 250);
+// const invTwo = new Invoice("luigi", "work on the mario website", 300);
+// let invoices: Invoice[] = []; // initialize an array
+// invoices.push(invOne);
+// invoices.push(invTwo);
+// invoices.forEach((inv) => {
+//   // can still call inv.format() even though details is private
+//   console.log(inv.client, inv.amount, inv.format());
+// });
+const anchor = document.querySelector("a"); // or, put excramation mark at the end
 // one of the ways ... runtime check
 // if (anchor) {
 //   console.log(anchor.href);
@@ -38,13 +51,20 @@ console.log(anchor.href);
 // with only this, ts doesn't know which element the class is with
 // const form = document.querySelector(".new-item-form")!;
 // so what we need to do is "Type Casting"
-var form = document.querySelector(".new-item-form");
+const form = document.querySelector(".new-item-form");
 console.log(form.children);
-var type = document.querySelector("#type");
-var tofrom = document.querySelector("#tofrom");
-var details = document.querySelector("#details");
-var amount = document.querySelector("#amount");
-form.addEventListener("submit", function (e) {
+const type = document.querySelector("#type");
+const tofrom = document.querySelector("#tofrom");
+const details = document.querySelector("#details");
+const amount = document.querySelector("#amount");
+form.addEventListener("submit", (e) => {
     e.preventDefault();
-    console.log(type.value, tofrom.value, details.value, amount.valueAsNumber);
+    let doc;
+    if (type.value === "invoice") {
+        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
+    }
+    else {
+        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+    }
+    console.log(doc);
 });
